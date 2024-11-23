@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MaxClickEmpire offers premium affiliate deals tailored for your location and devices. Start exploring offers now!">
+    <meta name="keywords" content="affiliate offers, CPA marketing, ad networks, MaxClickEmpire, online deals">
+    <meta name="author" content="MaxClickEmpire">
+    <title>MaxClickEmpire - Premium Affiliate Offers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #0078d7;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+
+        section {
+            margin: 20px auto;
+            padding: 10px;
+            max-width: 800px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        #offer-display {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .offer {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #0078d7;
+            color: white;
+            margin-top: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin: 15px 10px;
+            padding: 12px 30px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #005f8e;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        iframe {
+            width: 100%;
+            border: none;
+            height: 600px;
+        }
+
+        .offers-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .offers-buttons a {
+            text-align: center;
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .offers-buttons a:hover {
+            background-color: #218838;
+        }
+
+        .adult-button {
+            background-color: #dc3545;
+        }
+
+        .adult-button:hover {
+            background-color: #c82333;
+        }
+
+        .banner {
+            width: 100%;
+            max-height: 250px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .banner img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Welcome to MaxClickEmpire</h1>
+        <p>Discover premium offers tailored just for you!</p>
+    </header>
+
+    <!-- Affiliate Program Section -->
+    <section id="affiliate-banner">
+        <h3>Join Our Affiliate Program</h3>
+        <a href="https://beta.publishers.adsterra.com/referral/UKgMcJgQgY" target="_blank" class="cta-button">
+            Join Affiliate Program
+        </a>
+    </section>
+
+    <!-- Adsterra Banner Section (Direct Ad Display) -->
+    <section id="adsterra-banner">
+        <div class="banner">
+            <a href="https://beta.publishers.adsterra.com/referral/UKgMcJgQgY" target="_blank" rel="nofollow">
+                <img alt="Adsterra Banner" src="https://landings-cdn.adsterratech.com/referralBanners/gif/468x120_adsterra_reff.gif">
+            </a>
+        </div>
+    </section>
+
+    <!-- Offers Display Section -->
+    <section id="offers">
+        <h2>Special Offers</h2>
+
+        <div class="offers-buttons">
+            <a href="https://www.profitablecpmrate.com/j7z759s0?key=sampleAffiliateLink1" target="_blank" class="cta-button">Non-Adult Offer</a>
+            <a href="https://www.profitablecpmrate.com/bfzwy2uin?key=af61a7dda4d028e23d59563e83345b39" target="_blank" class="cta-button adult-button">Adult Offer</a>
+        </div>
+
+        <div id="offer-display">
+            <p>Loading offers...</p>
+        </div>
+    </section>
+
+    <!-- SEO Content Section -->
+    <section id="seo-content">
+        <h3>MaxClickEmpire - Your Ultimate Source for Affiliate Marketing Deals</h3>
+        <p>MaxClickEmpire is your go-to platform for premium affiliate offers. Whether you're interested in non-adult or adult affiliate marketing opportunities, our platform provides you with the best deals tailored to your needs.</p>
+        <p>Our network of trusted partners offers CPA marketing, banner ads, and other affiliate offers that help you maximize your earnings. No matter your location or device, MaxClickEmpire has a solution for you.</p>
+        <p>Sign up today to start earning by promoting top-quality affiliate offers that convert. With MaxClickEmpire, affiliate marketing has never been easier!</p>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact-form">
+        <h3>Contact Us</h3>
+        <p>Have questions? Reach out through the form below:</p>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScV38UVU6uDXT1enPjQ0c2WnB5wyks7lRDWHvh5mBzsSXDL7Q/viewform?usp=sf_link" height="600"></iframe>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 MaxClickEmpire. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Function to fetch offers from the API
+        function loadOffers() {
+            const apiUrl = 'https://api3.adsterratools.com/publisher/offers.json';
+            const apiKey = 'bd037cecf6c0b9c562e2dbe5a07d7641';
+
+            fetch(apiUrl, {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'X-API-Key': apiKey
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                const offersDiv = document.getElementById('offer-display');
+                offersDiv.innerHTML = '';
+
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach(offer => {
+                        const offerElement = document.createElement('div');
+                        offerElement.className = 'offer';
+                        offerElement.innerHTML = `<a href="${offer.link}" target="_blank">${offer.title}</a>`;
+                        offersDiv.appendChild(offerElement);
+                    });
+                } else {
+                    loadFallbackOffers();
+                }
+            })
+            .catch(() => {
+                loadFallbackOffers();
+            });
+        }
+
+        // Fallback: Load direct link offers
+        function loadFallbackOffers() {
+            const offersDiv = document.getElementById('offer-display');
+            offersDiv.innerHTML = `
+                <p>Check out these special offers:</p>
+                <a href="https://www.profitablecpmrate.com/j7z759s0?key=sampleAffiliateLink1" target="_blank" class="offer">Non-Adult Offer: Get Started Now</a>
+                <a href="https://www.profitablecpmrate.com/bfzwy2uin?key=af61a7dda4d028e23d59563e83345b39"target<a href="https://www.profitablecpmrate.com/bfzwy2uin?key=af61a7dda4d028e23d59563e83345b39"target="_blank" class="offer">Adult Offer: Start Earning Today</a>
+            `;
+        }
+
+        // Call loadOffers on page load
+        window.onload = loadOffers;
+    </script>
+</body>
+
+</html>
