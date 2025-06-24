@@ -1,78 +1,22 @@
-(function () {
-  const getText = (selector) => document.querySelector(selector)?.innerText?.trim() || "";
-  const getAttr = (selector, attr) => document.querySelector(selector)?.getAttribute(attr) || "";
+// Ultra SEO & Engagement Injector for Blogger (function () { const getText = (selector) => document.querySelector(selector)?.innerText?.trim() || ""; const getAttr = (selector, attr) => document.querySelector(selector)?.getAttribute(attr) || "";
 
-  const title = getText("h1.post-title") || document.title || "MaxClickEmpire – Affiliate Marketing, Google Docs Templates, AI Tools";
-  
-  const description = document.querySelector("meta[name='description']")?.content?.trim() ||
-    "MaxClickEmpire empowers creators and marketers with proven affiliate marketing strategies, AI-powered productivity tools, Google Docs resume & planner templates, blogging monetization hacks, SEO tips, and digital business blueprints.";
+const title = getText("h1.post-title") || document.title || "MaxClickEmpire – Affiliate Marketing, Google Docs Templates, AI Tools"; const description = document.querySelector("meta[name='description']")?.content?.trim() || "MaxClickEmpire empowers creators and marketers with proven affiliate marketing strategies, AI-powered productivity tools, Google Docs resume & planner templates, blogging monetization hacks, SEO tips, and digital business blueprints."; const url = window.location.href; const author = "Ogunlana Akinola Okikiola"; const logo = "https://www.maxclickempire.com/favicon.ico"; const image = document.querySelector("img")?.src || logo; const publishedTime = getAttr("abbr.published", "title") || new Date().toISOString(); const modifiedTime = new Date().toISOString();
 
-  const url = window.location.href;
-  const author = "Ogunlana Akinola Okikiola";
-  const logo = "https://www.maxclickempire.com/favicon.ico";
-  const image = document.querySelector("img")?.src || logo;
-  const publishedTime = getAttr("abbr.published", "title") || new Date().toISOString();
-  const modifiedTime = new Date().toISOString();
+// --- Remove Conflicting Tags --- const removeOld = ["og:title", "og:description", "og:url", "og:type", "twitter:title", "twitter:description", "twitter:image", "twitter:card"]; removeOld.forEach(name => { const el = document.querySelector(meta[property='${name}'], meta[name='${name}']); if (el) el.remove(); });
 
-  // Remove conflicting meta tags
-  const removeOld = [
-    "og:title", "og:description", "og:url", "og:type",
-    "twitter:title", "twitter:description", "twitter:image", "twitter:card"
-  ];
-  removeOld.forEach(name => {
-    const el = document.querySelector(`meta[property='${name}'], meta[name='${name}']`);
-    if (el) el.remove();
-  });
+// --- Meta Tags Injection --- const metas = [ { name: "description", content: description }, { property: "og:title", content: title }, { property: "og:description", content: description }, { property: "og:type", content: "article" }, { property: "og:url", content: url }, { property: "og:image", content: image }, { name: "twitter:card", content: "summary_large_image" }, { name: "twitter:title", content: title }, { name: "twitter:description", content: description }, { name: "twitter:image", content: image } ]; metas.forEach(tag => { const meta = document.createElement("meta"); Object.keys(tag).forEach(k => meta.setAttribute(k, tag[k])); document.head.appendChild(meta); });
 
-  // Inject meta tags with keyword optimization
-  const metas = [
-    { name: "description", content: description },
-    { property: "og:title", content: title },
-    { property: "og:description", content: description },
-    { property: "og:type", content: "article" },
-    { property: "og:url", content: url },
-    { property: "og:image", content: image },
-    { name: "twitter:card", content: "summary_large_image" },
-    { name: "twitter:title", content: title },
-    { name: "twitter:description", content: description },
-    { name: "twitter:image", content: image }
-  ];
+// --- JSON-LD Schema --- const schema = { "@context": "https://schema.org", "@type": "BlogPosting", "headline": title, "description": description, "author": { "@type": "Person", "name": author }, "datePublished": publishedTime, "dateModified": modifiedTime, "image": image, "mainEntityOfPage": { "@type": "WebPage", "@id": url }, "publisher": { "@type": "Organization", "name": "MaxClickEmpire", "logo": { "@type": "ImageObject", "url": logo } } }; const schemaScript = document.createElement("script"); schemaScript.type = "application/ld+json"; schemaScript.textContent = JSON.stringify(schema); document.head.appendChild(schemaScript);
 
-  metas.forEach(tag => {
-    const meta = document.createElement("meta");
-    Object.keys(tag).forEach(k => meta.setAttribute(k, tag[k]));
-    document.head.appendChild(meta);
-  });
+// --- FAQ Schema --- const faq = [ { "@type": "Question", "name": "What is MaxClickEmpire?", "acceptedAnswer": { "@type": "Answer", "text": "MaxClickEmpire is a platform providing affiliate marketing strategies, Google Docs tools, and productivity guides." } }, { "@type": "Question", "name": "How do I make money with MaxClickEmpire?", "acceptedAnswer": { "@type": "Answer", "text": "You can follow guides on monetization, use Google Docs templates, and learn affiliate strategies." } } ]; const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": faq }; const faqScript = document.createElement("script"); faqScript.type = "application/ld+json"; faqScript.textContent = JSON.stringify(faqSchema); document.head.appendChild(faqScript);
 
-  // Inject structured JSON-LD schema
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": title,
-    "description": description,
-    "author": {
-      "@type": "Person",
-      "name": author
-    },
-    "datePublished": publishedTime,
-    "dateModified": modifiedTime,
-    "image": image,
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": url
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "MaxClickEmpire",
-      "logo": {
-        "@type": "ImageObject",
-        "url": logo
-      }
-    }
-  };
+// --- Table of Contents (TOC) --- const headings = document.querySelectorAll(".post-body h2, .post-body h3"); if (headings.length) { const toc = document.createElement("div"); toc.id = "toc"; toc.innerHTML = '<h2>📑 Table of Contents</h2><ul></ul>'; const list = toc.querySelector("ul"); headings.forEach((h, i) => { const id = toc-item-${i}; h.id = id; const li = document.createElement("li"); li.innerHTML = <a href="#${id}">${h.innerText}</a>; list.appendChild(li); }); document.querySelector(".post-body")?.insertAdjacentElement("afterbegin", toc); }
 
-  const schemaScript = document.createElement("script");
-  schemaScript.type = "application/ld+json";
-  schemaScript.textContent = JSON.stringify(schema);
-  document.head.appendChild(schemaScript);
-})();
+// --- Internal Link Injector (basic keyword matcher) --- const relatedLinks = [ { keyword: "Google Docs", url: "/2025/06/google-docs-template-guide.html" }, { keyword: "affiliate marketing", url: "/2025/06/affiliate-marketing-for-beginners.html" }, { keyword: "OpenAI", url: "/2025/06/openai-tools-for-bloggers.html" } ]; const paragraphs = document.querySelectorAll(".post-body p"); paragraphs.forEach(p => { relatedLinks.forEach(link => { if (p.innerText.includes(link.keyword) && !p.innerHTML.includes(link.url)) { p.innerHTML = p.innerHTML.replace(link.keyword, <a href='${link.url}'>${link.keyword}</a>); } }); });
+
+// --- Ad Injector --- const adHTML =  <div style="text-align:center;margin:20px 0"> <!-- Replace with your AdSense or Banner Code --> <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxx" data-ad-slot="1234567890" data-ad-format="auto"></ins> <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> </div>; const injectAfter = 2; // inject after 2nd paragraph if (paragraphs.length > injectAfter) { paragraphs[injectAfter].insertAdjacentHTML("afterend", adHTML); }
+
+// --- Analytics Injector --- const analyticsID = "G-XXXXXXXXXX"; // Replace with your GA4 ID const gtagScript = document.createElement("script"); gtagScript.src = https://www.googletagmanager.com/gtag/js?id=${analyticsID}; gtagScript.async = true; document.head.appendChild(gtagScript);
+
+const inlineScript = document.createElement("script"); inlineScript.innerHTML = window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${analyticsID}');; document.head.appendChild(inlineScript); })();
+
